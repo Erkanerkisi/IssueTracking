@@ -33,6 +33,10 @@ export class CreateTicketComponent implements OnInit {
     const value = form.value;
     console.log('user => ' + value.itemName);
     console.log('this.ticketservice.getIdSequence() => ' + this.ticketService.getIdSequence());
+    console.log('userFullName => ' + this.userService.getUser(value.itemAssignee).userFullName);
+    console.log('itemName => ' + value.itemName);
+    console.log('itemSubject => ' + value.itemSubject);
+    console.log('itemDescription => ' + value.itemDescription);
     this.ticket = new Ticket(this.ticketService.getIdSequence(),
       value.itemName,
       value.itemSubject,
@@ -43,8 +47,9 @@ export class CreateTicketComponent implements OnInit {
       this.userService.getUser(value.itemReporter),
       this.comments
     );
-    console.log('user => ' + this.userService.getUser(value.itemAssignee).userFullName);
+    
     this.ticketService.accessTickets().push(this.ticket);
+    //this.ticketService.addTicket(this.ticket);
     this.dialogRef.close();
 
     /* for (let entry of this.ticketservice.getTickets()) {
