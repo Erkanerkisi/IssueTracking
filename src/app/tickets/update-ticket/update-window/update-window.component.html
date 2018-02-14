@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Hello Erkan</h1>
+<form >
+<div mat-dialog-content>
+  <p>Update Ticket</p>
+ 
+
+    <div class="form-group">
+      <label>Item Name</label>
+      <input matInput type="text" class="form-control" [(ngModel)] = "updateableTicket.ticketName" name = "updateableTicket.ticketName"  required>
+      
+    </div>
+    <div class="form-group">
+      <label>Item Subject</label>
+      <input matInput type="text" class="form-control" [(ngModel)] = "updateableTicket.ticketSubject" name = "updateableTicket.ticketSubject"   required>
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <input matInput type="text" class="form-control" [(ngModel)] = "updateableTicket.ticketStatus" name = "updateableTicket.ticketStatus"   required>
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <input matInput type="text" class="form-control" [(ngModel)] = "updateableTicket.ticketType" name = "updateableTicket.ticketType"   required>
+    </div>
+  
+  
+    <div class="form-group">
+      <label>Description</label>
+      <textarea matInput class="form-control" rows="5"  [(ngModel)] = "updateableTicket.ticketDescription" name = "updateableTicket.ticketDescription"  required>
+      </textarea>
+    </div>
+       
+</div>
+</form>
+<div mat-dialog-actions>
+  <button type="button" class="btn btn-default" mat-button (click)="onNoClick()">Cancel</button>
+  <button type="button" class="btn btn-default  " mat-button [mat-dialog-close]="data.updateableTicket" cdkFocusInitial>Update</button>
+</div>

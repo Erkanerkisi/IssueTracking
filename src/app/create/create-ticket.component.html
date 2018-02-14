@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Hello Erkan</h1>
+
+
+      <form  #f="ngForm">
+          <div mat-dialog-content>
+        <div class="form-group">
+          <label>Item Name</label>
+          <input type="text" class="form-control"  name = 'itemName' id = 'itemName' ngModel
+          placeholder="Enter Item Name" required>
+
+        </div>
+         <div class="form-group">
+          <label>Item Subject</label>
+          <input type="text" class="form-control" name = 'ticketSubject' id = 'ticketSubject' ngModel   
+          placeholder="Enter Item Subject" required>
+        </div>
+         <div class="form-group">
+          <label>Status</label>
+          <input class="form-control" rows="5" id="ticketStatus" ngModel name = "ticketStatus" 
+           required>
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <input class="form-control" rows="5" ngModel  name = "ticketType"  
+          id="ticketType" required>
+        </div>
+        <div class="form-group">
+          <label>Assignee</label>
+          <select id="itemAssignee" class="form-control" ngModel name = "itemAssignee" required>
+            <option *ngFor="let user of users" [value]="user.userId">{{user.userFullName}}</option>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label>Reporter</label>
+          <select id="itemReporter" class="form-control" ngModel name = "itemReporter"  required>
+            <option *ngFor="let user of users" [value]="user.userId">{{user.userFullName}}</option>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="5" ngModel name = "ticketDescription" id="ticketDescription" required>
+          </textarea>
+        </div>  
+
+      </div>
+      </form>
+      <div mat-dialog-actions>
+          <button type="button" class="btn btn-default" mat-button (click)="onNoClick()">Cancel</button>
+          <button type="button" class="btn btn-default  " mat-button (click)="OnCreate(f)" cdkFocusInitial>Create</button>
+        </div>
+        
