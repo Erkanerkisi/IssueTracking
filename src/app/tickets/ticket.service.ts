@@ -2,6 +2,7 @@ import { Ticket } from "./ticket/ticket.model";
 import { EventEmitter, Injectable } from "@angular/core";
 import { Comment } from "./comments/comment.model";
 import { User } from "../users/user.model";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 export class TicketService {
 
@@ -142,12 +143,16 @@ export class TicketService {
     )
   ];
 
+  private tic = new BehaviorSubject<Ticket[]>(this.tickets);
+  cast = this.tic.asObservable();
+
 
   accessTickets() {
     return this.tickets;
   }
 
   getTickets() {
+    
     return this.tickets.slice();
   }
   getIdSequence() {

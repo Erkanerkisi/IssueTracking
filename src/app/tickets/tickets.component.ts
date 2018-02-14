@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Ticket } from './ticket/ticket.model';
 import { TicketService } from './ticket.service';
 
@@ -13,7 +13,8 @@ export class TicketsComponent implements OnInit {
   
   constructor(private ticketService: TicketService) { }
 
-  tickets :Ticket[] = this.ticketService.getTickets();
+  //tickets :Ticket[] = this.ticketService.getTickets();
+  tickets :Ticket[];
   ngOnInit() {
     console.log('Burda3');
     this.ticketService.ticketSelected.subscribe(
@@ -21,10 +22,16 @@ export class TicketsComponent implements OnInit {
         this.theTicket = ticket;
       }
     );
+
+
+    this.ticketService.cast.subscribe(tic => this.tickets = tic);
+
   }
   
   selectTicket(){
 
   }
+
+
   
 }
